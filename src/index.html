@@ -1,0 +1,36 @@
+<div class="container" id="app">
+    <h1 class="header">MindFire Blackjack <br> <small>{{ 'Score: ' + score }}</small></h1>
+    <div class="alert alert-success" role="alert" v-html="msgStr || 'No message.'"></div>
+    <div class="row" id="btnRow">
+        //Buttons for Hit,Stand, and Deal
+        <div id="hit"><button class="btn btn-success" v-on:click="hit">Hit</button></div>
+        <div class="col-xs-4"><button class="btn btn-block btn-primary" v-on:click="stand">Stand</button></div>
+        <div class="col-xs-4"><button class="btn btn-block btn-danger" v-on:click="deal">Deal</button></div>
+    </div>
+    //Players Panel
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h2 class="panel-title"><span>Player's Hand:</span>  <span class="badge"> {{ playerScore }}</span></h2>
+        </div>
+        <div class="panel-body">
+            <div v-for="card in player" v-bind:class="'poker poker-' + card"></div>
+        </div>
+    </div>
+    //Dealers Panel
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h2 class="panel-title"><span></span> Dealer's Hand: <span class="badge">{{ playing ? '?' : dealerScore }}</span></h2>
+        </div>
+        <div class="panel-body">
+            <div v-for="(card, i) in dealer" class="poker" v-bind:class="(playing && i==0) ? cardback : ('poker-' + card)"></div>
+        </div>
+    </div>
+</div>
+
+
+<link href="style.css" rel="stylesheet" />
+<script src="script.jss"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
